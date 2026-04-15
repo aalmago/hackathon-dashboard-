@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Agentic AI Platform Hackathon — Registrant Statistics</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<style>
+  :root {
+    --trimble-blue: #0063A3;
+    --trimble-dark: #003865;
+    --trimble-accent: #00A9E0;
+    --trimble-light: #E8F4FB;
+    --trimble-orange: #F7941D;
+    --bg: #F4F7FA;
+    --card: #FFFFFF;
+    --text: #1A2B3C;
+    --muted: #6B7A8D;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: Arial, sans-serif; background: var(--bg); color: var(--text); }
+
+  header {
+    background: linear-gradient(135deg, var(--trimble-dark) 0%, var(--trimble-blue) 60%, var(--trimble-accent) 100%);
+    color: white;
+    padding: 32px 40px 28px;
+  }
+  header h1 { font-size: 26px; font-weight: 700; letter-spacing: -0.3px; }
+  header p { margin-top: 6px; font-size: 14px; opacity: 0.85; }
+  header .subtitle { margin-top: 2px; font-size: 13px; opacity: 0.7; }
+
+  .kpi-row {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 16px;
+    padding: 24px 40px 0;
+  }
+  .kpi {
+    background: var(--card);
+    border-radius: 10px;
+    padding: 20px 18px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.07);
+    border-top: 4px solid var(--trimble-blue);
+    text-align: center;
+  }
+  .kpi.orange { border-top-color: var(--trimble-orange); }
+  .kpi.accent { border-top-color: var(--trimble-accent); }
+  .kpi.green { border-top-color: #28A745; }
+  .kpi.purple { border-top-color: #6F42C1; }
+  .kpi .num { font-size: 36px; font-weight: 800; color: var(--trimble-blue); line-height: 1; }
+  .kpi.orange .num { color: var(--trimble-orange); }
+  .kpi.accent .num { color: var(--trimble-accent); }
+  .kpi.green .num { color: #28A745; }
+  .kpi.purple .num { color: #6F42C1; }
+  .kpi .label { font-size: 12px; color: var(--muted); margin-top: 6px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }
+
+  .charts-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    padding: 24px 40px;
+  }
+  .card {
+    background: var(--card);
+    border-radius: 10px;
+    padding: 22px 24px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.07);
+  }
+  .card.full { grid-column: 1 / -1; }
+  .card h3 {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--trimble-dark);
+    margin-bottom: 4px;
+  }
+  .card .desc { font-size: 12px; color: var(--muted); margin-bottom: 18px; }
+  .chart-wrap { position: relative; }
+  .chart-wrap.pie { height: 280px; }
+  .chart-wrap.bar { height: 300px; }
+  .chart-wrap.hbar { height: 340px; }
+  .chart-wrap.doughnut { height: 260px; }
+
+  footer {
+    text-align: center;
+    font-size: 12px;
+    color: var(--muted);
+    padding: 20px 40px 32px;
+  }
+
+  @media (max-width: 900px) {
+    .kpi-row { grid-template-columns: repeat(3, 1fr); }
+    .charts-grid { grid-template-columns: 1fr; }
+    .card.full { grid-column: 1; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Agentic AI Platform Hackathon</h1>
+  <p>Registrant Statistics Dashboard</p>
+  <p class="subtitle">As of April 15, 2026 &nbsp;·&nbsp; Trimble Tech Innovation</p>
+</header>
+
+<div class="kpi-row">
+  <div class="kpi">
+    <div class="num">43</div>
+    <div class="label">Total Registrants</div>
+  </div>
+  <div class="kpi orange">
+    <div class="num">19</div>
+    <div class="label">On Teams</div>
+  </div>
+  <div class="kpi accent">
+    <div class="num">40</div>
+    <div class="label">Attending Workshop</div>
+  </div>
+  <div class="kpi green">
+    <div class="num">27</div>
+    <div class="label">Engineers</div>
+  </div>
+  <div class="kpi purple">
+    <div class="num">36</div>
+    <div class="label">Unique Products</div>
+  </div>
+</div>
+
+<div class="charts-grid">
+
+  <!-- Roles Donut -->
+  <div class="card">
+    <h3>Registrants by Role</h3>
+    <p class="desc">Primary role distribution across all 43 registrants</p>
+    <div class="chart-wrap doughnut">
+      <canvas id="rolesChart"></canvas>
+    </div>
+  </div>
+
+  <!-- Workshop Attendance -->
+  <div class="card">
+    <h3>Pre-work Workshop Attendance</h3>
+    <p class="desc">Will you attend the workshop on April 16, 2026?</p>
+    <div class="chart-wrap pie">
+      <canvas id="workshopChart"></canvas>
+    </div>
+  </div>
+
+  <!-- Products Bar -->
+  <div class="card full">
+    <h3>Products Represented</h3>
+    <p class="desc">Top product teams registered — multi-product entries counted individually</p>
+    <div class="chart-wrap hbar" style="height: 420px;">
+      <canvas id="productsChart"></canvas>
+    </div>
+  </div>
+
+  <!-- Hackathon Track -->
+  <div class="card">
+    <h3>Preferred Hackathon Track</h3>
+    <p class="desc">Which track registrants are most interested in</p>
+    <div class="chart-wrap bar">
+      <canvas id="trackChart"></canvas>
+    </div>
+  </div>
+
+  <!-- Team Status -->
+  <div class="card">
+    <h3>Team Formation Status</h3>
+    <p class="desc">Registrants with a team vs. still looking</p>
+    <div class="chart-wrap pie">
+      <canvas id="teamChart"></canvas>
+    </div>
+  </div>
+
+</div>
+
+<footer>Agentic AI Platform Hackathon · Trimble Tech Innovation · Data as of April 15, 2026</footer>
+
+<script>
+const BLUE       = '#0063A3';
+const DARK       = '#003865';
+const ACCENT     = '#00A9E0';
+const ORANGE     = '#F7941D';
+const GREEN      = '#28A745';
+const PURPLE     = '#6F42C1';
+const TEAL       = '#20C997';
+const RED        = '#DC3545';
+const LIGHT_BLUE = '#6EA8D0';
+const YELLOW     = '#FFC107';
+
+// ── Roles Donut ──────────────────────────────────────────────
+new Chart(document.getElementById('rolesChart'), {
+  type: 'doughnut',
+  data: {
+    labels: ['Engineer', 'Product Manager', 'UX Designer', 'Consultant', 'Leadership / Mgmt', 'Other'],
+    datasets: [{
+      data: [27, 5, 3, 2, 3, 3],
+      backgroundColor: [BLUE, ORANGE, ACCENT, GREEN, PURPLE, TEAL],
+      borderWidth: 2,
+      borderColor: '#fff'
+    }]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    cutout: '60%',
+    plugins: {
+      legend: {
+        position: 'right',
+        labels: { font: { family: 'Arial', size: 12 }, padding: 14, boxWidth: 14 }
+      },
+      tooltip: {
+        callbacks: {
+          label: ctx => ` ${ctx.label}: ${ctx.raw} (${Math.round(ctx.raw/43*100)}%)`
+        }
+      }
+    }
+  }
+});
+
+// ── Workshop Pie ──────────────────────────────────────────────
+new Chart(document.getElementById('workshopChart'), {
+  type: 'pie',
+  data: {
+    labels: ['Yes — Attending', 'No'],
+    datasets: [{
+      data: [40, 3],
+      backgroundColor: [GREEN, RED],
+      borderWidth: 2,
+      borderColor: '#fff'
+    }]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: {
+      legend: {
+        position: 'bottom',
+        labels: { font: { family: 'Arial', size: 12 }, padding: 16, boxWidth: 14 }
+      },
+      tooltip: {
+        callbacks: {
+          label: ctx => ` ${ctx.label}: ${ctx.raw} (${Math.round(ctx.raw/43*100)}%)`
+        }
+      }
+    }
+  }
+});
+
+// ── Products Horizontal Bar ───────────────────────────────────
+const productLabels = [
+  'Siteworks', 'ProjectSight', 'SketchUp', 'Tekla Structures',
+  'B2W / B2W Estimate & Track', 'AgileAssets', 'Swarm Project',
+  'Trimble Agentic Studio', 'Trimble Access & Business Centre',
+  'TerraFlex / Catalyst / VW / LM', 'Unity Construct / Maintain',
+  'Trimble Earthworks', 'GeoManager', 'Trimble Pay',
+  'Trimble Intelligent Support', 'Titan Engine', 'Smart Entry Portal',
+  'Enterprise DataWarehouse', 'Field Systems - Trimble Pro Point',
+  'VDC and FabShop', 'Emerging Technology', 'Unity Smartforms',
+  'Maintain/Construct', 'AECO Trimble Istore', 'Admin Console',
+  'Manufacturing Test Tools', 'Trimble Processing Framework',
+  'Project Delivery Scheduling', 'Corsa / Nova / B&E Incubation',
+  'O&PS (AECO)', 'Unity'
+];
+const productCounts = [
+  3, 2, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1
+];
+
+// sort descending
+const combined = productLabels.map((l, i) => ({ l, c: productCounts[i] }))
+  .sort((a, b) => b.c - a.c);
+
+new Chart(document.getElementById('productsChart'), {
+  type: 'bar',
+  data: {
+    labels: combined.map(x => x.l),
+    datasets: [{
+      label: 'Registrants',
+      data: combined.map(x => x.c),
+      backgroundColor: combined.map((_, i) => i < 3 ? BLUE : LIGHT_BLUE),
+      borderRadius: 4,
+    }]
+  },
+  options: {
+    indexAxis: 'y',
+    responsive: true,
+    maintainAspectRatio: false,
+    scales: {
+      x: {
+        beginAtZero: true,
+        ticks: { stepSize: 1, font: { family: 'Arial', size: 11 } },
+        grid: { color: '#F0F0F0' }
+      },
+      y: {
+        ticks: { font: { family: 'Arial', size: 11 } }
+      }
+    },
+    plugins: {
+      legend: { display: false },
+      tooltip: {
+        callbacks: {
+          label: ctx => ` ${ctx.raw} registrant${ctx.raw > 1 ? 's' : ''}`
+        }
+      }
+    }
+  }
+});
+
+// ── Hackathon Track ───────────────────────────────────────────
+new Chart(document.getElementById('trackChart'), {
+  type: 'bar',
+  data: {
+    labels: ["Not Sure Yet", "Interactive Agent\nComponents", "Trimble Assist\nFeature Experiments"],
+    datasets: [{
+      label: 'Registrants',
+      data: [26, 11, 6],
+      backgroundColor: [LIGHT_BLUE, BLUE, ORANGE],
+      borderRadius: 6,
+    }]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    scales: {
+      y: {
+        beginAtZero: true,
+        ticks: { stepSize: 5, font: { family: 'Arial', size: 11 } },
+        grid: { color: '#F0F0F0' }
+      },
+      x: {
+        ticks: { font: { family: 'Arial', size: 11 } }
+      }
+    },
+    plugins: {
+      legend: { display: false },
+      tooltip: {
+        callbacks: {
+          label: ctx => ` ${ctx.raw} registrants (${Math.round(ctx.raw/43*100)}%)`
+        }
+      }
+    }
+  }
+});
+
+// ── Team Status ───────────────────────────────────────────────
+new Chart(document.getElementById('teamChart'), {
+  type: 'doughnut',
+  data: {
+    labels: ['Have a Team', 'No Team Yet'],
+    datasets: [{
+      data: [19, 24],
+      backgroundColor: [BLUE, LIGHT_BLUE],
+      borderWidth: 2,
+      borderColor: '#fff'
+    }]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    cutout: '55%',
+    plugins: {
+      legend: {
+        position: 'bottom',
+        labels: { font: { family: 'Arial', size: 12 }, padding: 16, boxWidth: 14 }
+      },
+      tooltip: {
+        callbacks: {
+          label: ctx => ` ${ctx.label}: ${ctx.raw} (${Math.round(ctx.raw/43*100)}%)`
+        }
+      }
+    }
+  }
+});
+</script>
+</body>
+</html>
