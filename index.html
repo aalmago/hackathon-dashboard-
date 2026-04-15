@@ -9,6 +9,7 @@
   :root {
     --blue:   #0063A3;
     --dark:   #003865;
+    --dark2:  #004F82;
     --accent: #00A9E0;
     --orange: #F7941D;
     --green:  #28A745;
@@ -29,20 +30,15 @@
   header {
     background: linear-gradient(120deg, var(--dark) 0%, var(--blue) 55%, #0086CC 100%);
     padding: 26px 36px 22px;
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
+    display: flex; justify-content: space-between; align-items: flex-end;
   }
   header h1 { font-size: 23px; font-weight: 800; color: #fff; letter-spacing: -.3px; }
   header p  { margin-top: 5px; font-size: 12.5px; color: rgba(255,255,255,.72); }
   header .badge {
     background: rgba(255,255,255,.15);
     border: 1px solid rgba(255,255,255,.3);
-    border-radius: 20px;
-    padding: 6px 16px;
-    font-size: 12px;
-    color: rgba(255,255,255,.9);
-    white-space: nowrap;
+    border-radius: 20px; padding: 6px 16px;
+    font-size: 12px; color: rgba(255,255,255,.9); white-space: nowrap;
   }
 
   /* ── KPI strip ───────────────────────────────────────────── */
@@ -64,18 +60,13 @@
 
   /* ── Grid ────────────────────────────────────────────────── */
   .grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 16px;
-    padding: 20px 24px;
-    max-width: 1200px;
-    margin: 0 auto;
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 16px; padding: 20px 24px;
+    max-width: 1200px; margin: 0 auto;
   }
   .card {
-    background: var(--card);
-    border-radius: 10px;
-    padding: 20px 22px;
-    box-shadow: 0 1px 6px rgba(0,0,0,.07);
+    background: var(--card); border-radius: 10px;
+    padding: 20px 22px; box-shadow: 0 1px 6px rgba(0,0,0,.07);
   }
   .card.full { grid-column: 1 / -1; }
   .card-head { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 3px; }
@@ -90,47 +81,32 @@
 
   /* ── Chart sizes ─────────────────────────────────────────── */
   .ch { position: relative; }
-  .ch-donut  { height: 246px; }
-  .ch-pie    { height: 230px; }
-  .ch-col    { height: 236px; }
-  .ch-hbar   { height: 870px; }  /* tall enough for 37 products */
+  .ch-donut { height: 246px; }
+  .ch-pie   { height: 230px; }
+  .ch-col   { height: 236px; }
+  .ch-hbar  { height: 1110px; } /* 47 products × ~23px */
 
-  /* ── Legend key for product colour tiers ─────────────────── */
-  .prod-legend {
-    display: flex; gap: 18px; margin-bottom: 12px; flex-wrap: wrap;
-  }
-  .prod-legend span {
-    display: flex; align-items: center; gap: 6px;
-    font-size: 11px; color: var(--muted);
-  }
-  .prod-legend i {
-    display: inline-block; width: 12px; height: 12px;
-    border-radius: 2px; flex-shrink: 0;
-  }
+  /* ── Product legend ──────────────────────────────────────── */
+  .prod-legend { display: flex; gap: 18px; margin-bottom: 10px; flex-wrap: wrap; }
+  .prod-legend span { display: flex; align-items: center; gap: 6px; font-size: 11px; color: var(--muted); }
+  .prod-legend i { display: inline-block; width: 12px; height: 12px; border-radius: 2px; flex-shrink: 0; }
 
   /* ── Insight notes ───────────────────────────────────────── */
   .notes {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 12px;
-    padding: 0 24px 20px;
-    max-width: 1200px;
-    margin: 0 auto;
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    gap: 12px; padding: 0 24px 20px;
+    max-width: 1200px; margin: 0 auto;
   }
   .note {
-    background: var(--light);
-    border-left: 3px solid var(--blue);
-    border-radius: 0 6px 6px 0;
-    padding: 10px 14px;
-    font-size: 11.5px;
-    color: var(--dark);
+    background: var(--light); border-left: 3px solid var(--blue);
+    border-radius: 0 6px 6px 0; padding: 10px 14px;
+    font-size: 11.5px; color: var(--dark);
   }
   .note strong { display: block; font-size: 12.5px; margin-bottom: 3px; }
 
   footer {
     text-align: center; font-size: 11px; color: var(--muted);
-    padding: 14px 24px 26px;
-    border-top: 1px solid #E0E8F0;
+    padding: 14px 24px 26px; border-top: 1px solid #E0E8F0;
   }
 
   @media (max-width: 820px) {
@@ -149,32 +125,32 @@
     <h1>Agentic AI Platform Hackathon</h1>
     <p>Registrant Statistics &nbsp;·&nbsp; Trimble Tech Innovation &nbsp;·&nbsp; April 2026</p>
   </div>
-  <div class="badge">52 Unique Registrants &nbsp;·&nbsp; April 15, 2026</div>
+  <div class="badge">63 Unique Registrants &nbsp;·&nbsp; April 15, 2026</div>
 </header>
 
 <div class="kpi-strip">
   <div class="kpi" style="--ac:#00A9E0">
-    <div class="num">52</div>
+    <div class="num">63</div>
     <div class="lbl">Unique Registrants</div>
-    <div class="sub">55 submissions · 3 deduped</div>
+    <div class="sub">66 submissions · 3 deduped</div>
   </div>
   <div class="kpi" style="--ac:#28A745">
-    <div class="num">49</div>
+    <div class="num">60</div>
     <div class="lbl">Attending Workshop</div>
-    <div class="sub">94% of registrants · April 16</div>
+    <div class="sub">95% of registrants · April 16</div>
   </div>
   <div class="kpi" style="--ac:#F7941D">
-    <div class="num">22</div>
+    <div class="num">25</div>
     <div class="lbl">On Teams</div>
-    <div class="sub">42% have a team</div>
+    <div class="sub">40% have a team</div>
   </div>
   <div class="kpi" style="--ac:#6F42C1">
-    <div class="num">34</div>
+    <div class="num">41</div>
     <div class="lbl">Engineers</div>
     <div class="sub">65% of the cohort</div>
   </div>
   <div class="kpi" style="--ac:#20C997">
-    <div class="num">37</div>
+    <div class="num">47</div>
     <div class="lbl">Products Represented</div>
     <div class="sub">Across all divisions</div>
   </div>
@@ -186,9 +162,9 @@
   <div class="card">
     <div class="card-head">
       <h3>Registrants by Role</h3>
-      <span class="chip">52 registrants</span>
+      <span class="chip">63 registrants</span>
     </div>
-    <p class="desc">Engineers make up 65% of the cohort — a strong builder-heavy mix</p>
+    <p class="desc">Engineers make up 65% — new additions include Data Annotation and Customer Care</p>
     <div class="ch ch-donut"><canvas id="rolesChart"></canvas></div>
   </div>
 
@@ -198,23 +174,23 @@
       <h3>Pre-work Workshop Attendance</h3>
       <span class="chip">April 16, 2026</span>
     </div>
-    <p class="desc">94% confirmed attendance — exceptional engagement before the event even starts</p>
+    <p class="desc">95% confirmed — the highest rate yet across all registration waves</p>
     <div class="ch ch-pie"><canvas id="workshopChart"></canvas></div>
   </div>
 
-  <!-- Products — full list -->
+  <!-- Products — all 47 -->
   <div class="card full">
     <div class="card-head">
       <h3>Products Represented</h3>
-      <span class="chip">37 products · all shown</span>
+      <span class="chip">47 products · all shown</span>
     </div>
     <div class="prod-legend">
-      <span><i style="background:#0063A3"></i> 6 registrants</span>
+      <span><i style="background:#003865"></i> 7 registrants</span>
       <span><i style="background:#004F82"></i> 3 registrants</span>
       <span><i style="background:#6EA8D0"></i> 2 registrants</span>
       <span><i style="background:#BDD4E8"></i> 1 registrant</span>
     </div>
-    <p class="desc">All 37 products represented — variants normalised (SmartForms, AgileAssets, B2W, GeoManager, Unity Maintain/Permit)</p>
+    <p class="desc">All 47 products represented — variants normalised (SmartForms, AgileAssets, B2W, GeoManager, Unity Maintain/Permit)</p>
     <div class="ch ch-hbar"><canvas id="productsChart"></canvas></div>
   </div>
 
@@ -224,7 +200,7 @@
       <h3>Preferred Hackathon Track</h3>
       <span class="chip">3 tracks</span>
     </div>
-    <p class="desc">56% still undecided — the April 16 workshop is prime conversion ground</p>
+    <p class="desc">57% still undecided — consistent across all waves; workshop is the inflection point</p>
     <div class="ch ch-col"><canvas id="trackChart"></canvas></div>
   </div>
 
@@ -232,9 +208,9 @@
   <div class="card">
     <div class="card-head">
       <h3>Team Formation Status</h3>
-      <span class="chip">22 with teams</span>
+      <span class="chip">25 with teams</span>
     </div>
-    <p class="desc">58% are solo or still looking — room for more team formation</p>
+    <p class="desc">60% still solo or looking — strong opportunity to facilitate team formation</p>
     <div class="ch ch-pie"><canvas id="teamChart"></canvas></div>
   </div>
 
@@ -243,23 +219,23 @@
 <div class="notes">
   <div class="note">
     <strong>Engineer-heavy cohort</strong>
-    65% engineers signals strong builder energy — challenge design can afford high technical depth.
+    65% engineers — consistent across all registration waves. Challenge design can target high technical depth.
   </div>
   <div class="note">
     <strong>Remarkable workshop pull</strong>
-    94% confirmed for April 16 pre-work. Leverage this for track alignment and team formation.
+    95% confirmed for April 16 — use this moment for track alignment and team formation push.
   </div>
   <div class="note">
     <strong>Track undecided majority</strong>
-    56% still uncommitted on track — the workshop is the key moment to drive decisions.
+    57% still uncommitted. The workshop remains the key conversion moment for track decisions.
   </div>
   <div class="note">
-    <strong>Broad product diversity</strong>
-    37 distinct products from Unity SmartForms to Field Systems — true cross-divisional reach.
+    <strong>47 products now represented</strong>
+    10 new products joined this wave — from Trimble RTX to TC Web — signalling broad org-wide reach.
   </div>
 </div>
 
-<footer>Agentic AI Platform Hackathon &nbsp;·&nbsp; Trimble Tech Innovation &nbsp;·&nbsp; As of April 15, 2026 &nbsp;·&nbsp; 52 unique registrants (55 submissions, 3 duplicates removed)</footer>
+<footer>Agentic AI Platform Hackathon &nbsp;·&nbsp; Trimble Tech Innovation &nbsp;·&nbsp; As of April 15, 2026 &nbsp;·&nbsp; 63 unique registrants (66 submissions, 3 duplicates removed)</footer>
 
 <script>
 const C = {
@@ -268,15 +244,15 @@ const C = {
   red:    '#DC3545', purple: '#6F42C1', lblue:  '#6EA8D0',
   xlblue: '#BDD4E8', teal:   '#20C997'
 };
-const pct = (n, t=52) => `${Math.round(n/t*100)}%`;
+const pct = (n, t=63) => `${Math.round(n/t*100)}%`;
 
 /* ── Roles donut ──────────────────────────────────────────── */
 new Chart(document.getElementById('rolesChart'), {
   type: 'doughnut',
   data: {
-    labels: ['Engineer (34)', 'Product Manager (6)', 'UX Designer (4)', 'Leadership / Mgmt (3)', 'Other (5)'],
+    labels: ['Engineer (41)', 'Product Manager (7)', 'UX Designer (4)', 'Leadership / Mgmt (4)', 'Other (7)'],
     datasets: [{
-      data: [34, 6, 4, 3, 5],
+      data: [41, 7, 4, 4, 7],
       backgroundColor: [C.blue, C.orange, C.accent, C.purple, C.lblue],
       borderWidth: 3, borderColor: '#fff', hoverOffset: 8
     }]
@@ -297,9 +273,9 @@ new Chart(document.getElementById('rolesChart'), {
 new Chart(document.getElementById('workshopChart'), {
   type: 'pie',
   data: {
-    labels: ['Yes — Attending (49)', 'Not Attending (3)'],
+    labels: ['Yes — Attending (60)', 'Not Attending (3)'],
     datasets: [{
-      data: [49, 3],
+      data: [60, 3],
       backgroundColor: [C.green, C.red],
       borderWidth: 3, borderColor: '#fff', hoverOffset: 8
     }]
@@ -313,52 +289,61 @@ new Chart(document.getElementById('workshopChart'), {
   }
 });
 
-/* ── Products horizontal bar — all 37 ────────────────────── */
+/* ── Products horizontal bar — all 47 ────────────────────── */
 const allProducts = [
-  { label: 'Unity SmartForms',                                      count: 6 },
-  { label: 'Siteworks',                                             count: 3 },
-  { label: 'AgileAssets',                                           count: 3 },
-  { label: 'ProjectSight',                                          count: 2 },
-  { label: 'Trimble Unity Maintain/Permit',                         count: 2 },
-  { label: 'B2W / B2W Estimate & Track',                            count: 2 },
-  { label: 'GeoManager',                                            count: 2 },
-  { label: 'Tekla Structures',                                      count: 2 },
-  { label: 'Trimble Agentic Studio',                                count: 1 },
-  { label: 'Emerging Technology',                                   count: 1 },
-  { label: 'Admin Console',                                         count: 1 },
-  { label: 'Maintain / Construct',                                  count: 1 },
-  { label: 'O&PS (AECO)',                                           count: 1 },
-  { label: 'ProjectSight Submittal MCP + Gemini + MCP Schema',      count: 1 },
-  { label: 'Titan Engine',                                          count: 1 },
-  { label: 'Unity Construct (eBuilder) / Unity Maintain (Cityworks)',count: 1 },
-  { label: 'TerraFlex / Catalyst / Virtual Warehouse / License Mgr',count: 1 },
-  { label: 'Smart Entry Portal',                                    count: 1 },
-  { label: 'Trimble Unity Field / Project Einstein',                count: 1 },
-  { label: 'Trimble Access + Business Centre + Agentic AI Platform',count: 1 },
-  { label: 'Trimble Earthworks',                                    count: 1 },
-  { label: 'Project Delivery Scheduling',                           count: 1 },
-  { label: 'Unity',                                                 count: 1 },
-  { label: 'Trimble Intelligent Support',                           count: 1 },
-  { label: 'Trimble Pay',                                           count: 1 },
-  { label: 'SketchUp',                                              count: 1 },
-  { label: 'Corsa / Nova / B&E Incubation Program',                 count: 1 },
-  { label: 'Trimble Processing Framework',                          count: 1 },
-  { label: 'Manufacturing Test Tools & Systems',                    count: 1 },
-  { label: 'VDC and FabShop',                                       count: 1 },
-  { label: 'Trimble Business Centre + Agentic AI Platform',         count: 1 },
-  { label: 'Swarm Project',                                         count: 1 },
-  { label: 'Enterprise DataWarehouse',                              count: 1 },
-  { label: 'AECO Trimble Istore',                                   count: 1 },
-  { label: 'Field Systems — Trimble Pro Point',                     count: 1 },
-  { label: 'Trimble Connect',                                       count: 1 },
-  { label: 'As many as PMs will allow 😄',                          count: 1 },
+  { label: 'Unity SmartForms',                                         count: 7 },
+  { label: 'Siteworks',                                                count: 3 },
+  { label: 'AgileAssets',                                              count: 3 },
+  { label: 'Tekla Structures',                                         count: 2 },
+  { label: 'ProjectSight',                                             count: 2 },
+  { label: 'B2W / B2W Estimate & Track',                               count: 2 },
+  { label: 'GeoManager',                                               count: 2 },
+  { label: 'Trimble Unity Maintain/Permit',                            count: 2 },
+  { label: 'ProjectSight Submittal MCP + Gemini + MCP Schema',         count: 1 },
+  { label: 'O&PS (AECO)',                                              count: 1 },
+  { label: 'Unity Construct (eBuilder) / Unity Maintain (Cityworks)',  count: 1 },
+  { label: 'TerraFlex / Catalyst / Virtual Warehouse / License Mgr',   count: 1 },
+  { label: 'Smart Entry Portal',                                       count: 1 },
+  { label: 'Trimble Unity Field / Project Einstein',                   count: 1 },
+  { label: 'Trimble Agentic Studio',                                   count: 1 },
+  { label: 'Emerging Technology',                                      count: 1 },
+  { label: 'Trimble Store / Salesforce / Trimble Pivot',               count: 1 },
+  { label: 'CTCT',                                                     count: 1 },
+  { label: 'Trimble 4D Control + Business Center + Access + Mine Insights', count: 1 },
+  { label: 'Field System',                                             count: 1 },
+  { label: 'Taskforce / Asset Registry',                               count: 1 },
+  { label: 'Trimble Business Center',                                  count: 1 },
+  { label: 'Trimble Unity Suite',                                      count: 1 },
+  { label: 'TC Web',                                                   count: 1 },
+  { label: 'Trimble RTX Corrections',                                  count: 1 },
+  { label: 'Trimble Connect',                                          count: 1 },
+  { label: 'Admin Console',                                            count: 1 },
+  { label: 'Maintain / Construct',                                     count: 1 },
+  { label: 'Trimble Access + Business Centre + Agentic AI Platform',   count: 1 },
+  { label: 'Field Systems — Trimble Pro Point',                        count: 1 },
+  { label: 'AECO Trimble Istore',                                      count: 1 },
+  { label: 'Enterprise DataWarehouse',                                 count: 1 },
+  { label: 'Swarm Project',                                            count: 1 },
+  { label: 'Trimble Business Centre + Agentic AI Platform',            count: 1 },
+  { label: 'VDC and FabShop',                                          count: 1 },
+  { label: 'Manufacturing Test Tools & Systems',                       count: 1 },
+  { label: 'Trimble Processing Framework',                             count: 1 },
+  { label: 'As many as PMs will allow 😄',                             count: 1 },
+  { label: 'Corsa / Nova / B&E Incubation Program',                    count: 1 },
+  { label: 'SketchUp',                                                 count: 1 },
+  { label: 'Trimble Pay',                                              count: 1 },
+  { label: 'Trimble Intelligent Support',                              count: 1 },
+  { label: 'Trimble Earthworks',                                       count: 1 },
+  { label: 'Unity',                                                    count: 1 },
+  { label: 'Project Delivery Scheduling',                              count: 1 },
+  { label: 'Titan Engine',                                             count: 1 },
+  { label: 'Trimble Cloud Console',                                    count: 1 },
 ];
 
-// sort descending then stable
 allProducts.sort((a, b) => b.count - a.count);
 
 const prodColors = allProducts.map(p =>
-  p.count >= 6 ? C.dark   :
+  p.count >= 7 ? C.dark   :
   p.count >= 3 ? C.dark2  :
   p.count >= 2 ? C.lblue  : C.xlblue
 );
@@ -370,8 +355,7 @@ new Chart(document.getElementById('productsChart'), {
     datasets: [{
       data: allProducts.map(p => p.count),
       backgroundColor: prodColors,
-      borderRadius: 3,
-      borderSkipped: false
+      borderRadius: 3, borderSkipped: false
     }]
   },
   options: {
@@ -379,13 +363,11 @@ new Chart(document.getElementById('productsChart'), {
     responsive: true, maintainAspectRatio: false,
     scales: {
       x: {
-        beginAtZero: true, max: 7,
+        beginAtZero: true, max: 8,
         ticks: { stepSize: 1, font: { size: 10 } },
         grid: { color: '#EEF2F7' }
       },
-      y: {
-        ticks: { font: { size: 10.5 } }
-      }
+      y: { ticks: { font: { size: 10.5 } } }
     },
     plugins: {
       legend: { display: false },
@@ -400,7 +382,7 @@ new Chart(document.getElementById('trackChart'), {
   data: {
     labels: ['Not Sure Yet', 'Interactive Agent\nComponents', 'Trimble Assist\nFeature Experiments'],
     datasets: [{
-      data: [29, 15, 8],
+      data: [36, 18, 9],
       backgroundColor: [C.lblue, C.blue, C.orange],
       borderRadius: 6, borderSkipped: false
     }]
@@ -409,8 +391,8 @@ new Chart(document.getElementById('trackChart'), {
     responsive: true, maintainAspectRatio: false,
     scales: {
       y: {
-        beginAtZero: true, max: 34,
-        ticks: { stepSize: 5, font: { size: 10 } },
+        beginAtZero: true, max: 42,
+        ticks: { stepSize: 6, font: { size: 10 } },
         grid: { color: '#EEF2F7' }
       },
       x: { ticks: { font: { size: 10.5 }, maxRotation: 0 } }
@@ -429,9 +411,9 @@ new Chart(document.getElementById('trackChart'), {
 new Chart(document.getElementById('teamChart'), {
   type: 'doughnut',
   data: {
-    labels: ['Have a Team (22)', 'No Team Yet (30)'],
+    labels: ['Have a Team (25)', 'No Team Yet (38)'],
     datasets: [{
-      data: [22, 30],
+      data: [25, 38],
       backgroundColor: [C.blue, C.lblue],
       borderWidth: 3, borderColor: '#fff', hoverOffset: 8
     }]
